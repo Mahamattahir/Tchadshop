@@ -1,0 +1,12 @@
+.BtnContact .btn {
+    padding: 10px 40px;
+    background-color: rgb(133, 41, 205);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.5)
+}

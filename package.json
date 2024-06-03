@@ -1,0 +1,48 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "development": "mix",
+        "watch": "mix watch",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.24.5",
+        "@babel/preset-env": "^7.24.5",
+        "@babel/preset-react": "^7.24.1",
+        "axios": "^1.6.4",
+        "babel-loader": "^9.1.3",
+        "laravel-mix": "^6.0.49",
+        "laravel-vite-plugin": "^1.0.4",
+        "vite": "^5.2.11"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.5.2",
+        "@fortawesome/fontawesome-svg-core": "^6.5.2",
+        "@fortawesome/free-brands-svg-icons": "^6.5.2",
+        "@fortawesome/free-solid-svg-icons": "^6.5.2",
+        "@fortawesome/react-fontawesome": "^0.2.2",
+        "@inertiajs/inertia-react": "^0.8.1",
+        "@inertiajs/react": "^1.0.16",
+        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.13",
+        "@vitejs/plugin-react": "^4.2.1",
+        "bootstrap": "^5.3.3",
+        "css-loader": "^7.1.2",
+        "glob": "^10.3.16",
+        "jquery": "^3.7.1",
+        "mdb-react-ui-kit": "^8.0.0",
+        "react": "^18.3.1",
+        "react-bootstrap": "^2.10.2",
+        "react-dom": "^18.3.1",
+        "react-refresh": "^0.14.2",
+        "react-router-dom": "^6.23.1",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.77.2",
+        "sass-loader": "^14.2.1",
+        "style-loader": "^4.0.0"
+    }
+}
