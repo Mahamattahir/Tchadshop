@@ -13,12 +13,13 @@ class CategorieController extends Controller
     public function index()
     {
         $categories = Categorie::all();
-        $products = Product::all();
+        $products = Product::with('media')->get();
+
 
         return Inertia::render('Home', [
             'categories' => $categories,
             'products' => $products
         ]);
     }
-  
+
 }

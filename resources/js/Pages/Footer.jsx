@@ -7,9 +7,9 @@ function FooterSection() {
     /**
      *  une fonction qui vas generer les icons et text de chaque elememt
      *  au niveau du pied de la page sur section  contactez Nous
-     * @param {icon} icons 
-     * @param {string} texts 
-     * @returns 
+     * @param {icon} icons
+     * @param {string} texts
+     * @returns
      */
     function contactezNous() {
         return (
@@ -36,7 +36,7 @@ function FooterSection() {
     ]
     /**
      * Function qui genere les lien vers les pages principaux au niveau du footer section service
-     * @param {string} pages 
+     * @param {string} pages
      * @returns  {JSX.Element}
      */
     function servicefooter(pages) {
@@ -52,9 +52,9 @@ function FooterSection() {
     }
     /**
      * @type {Array}
-     * Une vaiable qui stock les donnees du section apropos du pied 
+     * Une vaiable qui stock les donnees du section apropos du pied
      *  @returns {Array}
-     * 
+     *
      */
     const Apropostext = [
         { text: "Livraison partout" },
@@ -63,8 +63,8 @@ function FooterSection() {
         { text: "Livraison a temps" },
     ]
     /**
-     * une fonction qui genere les elements du section aprpos du pied 
-     * @param {string} texts 
+     * une fonction qui genere les elements du section aprpos du pied
+     * @param {string} texts
      * @returns {JSX.Element}
      */
     function Apropos(texts) {
@@ -124,7 +124,7 @@ function FooterSection() {
                         </p>
                     </div>
                     <div className="col-md-6 px-xl-0 text-center    text-md-right">
-                        <img className="img-fluid" src="/image/Paiement.jpg" alt="Mode de paiement" />
+                        <img className="img-fluid" src="/Paiement.jpg" alt="Mode de paiement" />
                     </div>
                 </div>
             </div>

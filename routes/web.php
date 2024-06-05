@@ -7,3 +7,4 @@ use App\Http\Controllers\ContactController;
 Route::get('/', [CategorieController::class, 'index'])->name('home');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+

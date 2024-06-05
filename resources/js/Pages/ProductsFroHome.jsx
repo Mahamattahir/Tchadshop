@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link } from '@inertiajs/inertia-react';
 import { useEffect, useRef } from 'react';
-
 export function generateProductItems(products) {
-
     return products.map((product) => (
+
         <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 pb-1">
             <div className="product-item bg-light mb-4" style={{ boxShadow: ' 0 0 10px rgba(0, 0, 0, 0.2)' }}>
                 <div className="product-img position-relative overflow-hidden">
-                    <img className="img-fluid w-100" src={`http://localhost:8000/storage/${product.image_url}`} alt={product.Name} />
+                    <img className="img-fluid w-100" src={`/storage/${product.image_url}`} alt={product.Name} />
                     <div className="product-action">
                         <Link className="btn btn-outline-dark btn-square" href=""><i className="fa fa-shopping-cart"></i></Link>
                         <Link className="btn btn-outline-dark btn-square" href=""><i className="far fa-heart"></i></Link>
@@ -74,6 +73,7 @@ function Produits({ products = [] }) {
                 </h2>
                 <div className='row px-xl-5'>
                     {generateProductItems(products)}
+
                 </div>
 
 
@@ -82,7 +82,9 @@ function Produits({ products = [] }) {
 
 
 
+
     )
 }
+
 
 export default Produits
