@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
-import Layout from '../Layout';
+import Layout from './Layout';
 
 function GenerAllProduct(products) {
     if (!products || products.length === 0) {

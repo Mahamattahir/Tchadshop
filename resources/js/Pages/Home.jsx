@@ -4,14 +4,13 @@ import Hero from './Hero';
 import Corp from './BodyForHome';
 import Contact from './Contact';
 
-
 const Home = ({ categories, products }) => {
     return (
         <Layout categories={categories} >
             <Hero />
             <Corp products={products} />
-            <Contact />
 
+<Contact/>
         </Layout>
     );
 };
