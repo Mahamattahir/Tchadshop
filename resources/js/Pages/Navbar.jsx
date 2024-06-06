@@ -9,10 +9,16 @@ import MonCompte from './MonCompte';
 function Navbar({ categories = [] }) {
     const Linkpages = [
         { label: "Accueil", to: '/', icon: faHome },
-        { label: "Produits", to: '/Detail', icon: faBox },
-        { label: "Contact", to: '/Contact', icon: faEnvelope }
+        { label: "Produits", to: '/detail', icon: faBox },
+        { label: "Contact", to: '/contact', icon: faEnvelope }
     ];
-
+    /**
+     * Génère un lien de navigation avec une icône et un badge.
+     * Pour les produits aime et mit au panier
+     * @param {string} iconClass
+     * @param {number} badgeCount
+     * @returns {JSX.Element}
+     */
     function generateNavLink(iconClass, badgeCount) {
         return (
             <Link href="/" className="gap btn px-0 ml-2 pt-3" style={{ border: 'none' }}>
@@ -21,7 +27,11 @@ function Navbar({ categories = [] }) {
             </Link>
         );
     }
-
+   /**
+     * Genere les pages de bar de navigation en le parcourant sur le var Linkpages
+     * @param {String} pages
+     * @returns {JSX.Element}
+     */
     function generatePages(pages) {
         return pages.map((page, index) => (
             <div key={index} className='d-flex'>
@@ -150,7 +160,7 @@ function Navbar({ categories = [] }) {
     }, []);
 
     return (
-        <div>
+        <div className='BardeNavtigation'>
             <div className="LabardeNavtop container-fluid">
                 <div style={{ backgroundColor: '#bc9fea' }} className="shadow-bottom row py-1 px-xl-5 d-block d-lg-none">
                     <div className="col-lg-6 text-center text-lg-right">

@@ -13,7 +13,7 @@ class CategorieController extends Controller
     public function index()
     {
         $categories = Categorie::all();
-        $products = Product::with('media')->get();
+        $products = Product::orderBy('id','desc')->take(8)->get();
 
 
         return Inertia::render('Home', [
