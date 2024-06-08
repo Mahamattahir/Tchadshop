@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from '@inertiajs/react';
 
 function MonCompte() {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +10,7 @@ function MonCompte() {
     };
 
     return (
-        <Dropdown >
+        <Dropdown>
             <Dropdown.Toggle
                 type="button"
                 className="d-flex btn btn-sm bg-transparent border-0 dropdown-toggle mt-2 ml-1"
@@ -24,12 +23,8 @@ function MonCompte() {
                 </div>
             </Dropdown.Toggle>
             <Dropdown.Menu show={isOpen} className="dropdown-menu-center">
-                <Dropdown.Item className='bg-transparent'>
-                    <Link href="/inscription" style={{ textDecoration: 'none', color: '#000' }}>S'inscrire</Link>
-                </Dropdown.Item>
-                <Dropdown.Item className='bg-transparent'>
-                    <Link href="/creeuncompte" style={{ textDecoration: 'none', color: '#000' }}>Se connecter</Link>
-                </Dropdown.Item>
+                <Dropdown.Item href="/inscription" className="dropdown-item">S'inscrire</Dropdown.Item>
+                <Dropdown.Item href="/connexion" className="dropdown-item">Connexion</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     );
