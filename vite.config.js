@@ -6,10 +6,10 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-             
-                'resources/js/**/*.{js,jsx}',  
+
+                'resources/js/**/*.{js,jsx}',
                 'resources/css/Hero.css',
-                'resources/css/Navbar.css',  
+                'resources/css/Navbar.css',
                 'resources/css/acheter.css',
                 'resources/css/animation.css',
                 'resources/css/app.css',
@@ -24,15 +24,15 @@ export default defineConfig({
                 'resources/css/Inscription.css',
                 'resources/css/style.css',
                 'resources/css/style.min.css',
+                'resources/css/footer.css',
 
-                       
                 ...glob.sync('resources/sass/**/*.scss'),
                 ...glob.sync('resources/scss/bootstrap/scss/mixins/**/*.scss'),
                 ...glob.sync('resources/scss/bootstrap/scss/utilities/**/*.scss'),
                 ...glob.sync('resources/scss/bootstrap/scss/vendor/**/*.scss'),
                 ...glob.sync('resources/lib/easing/**/*.js'),
                 ...glob.sync('resources/lib/animate/**/*.css'),
-                
+
             ],
             refresh: true,
         }),

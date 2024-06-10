@@ -4,7 +4,7 @@ import Contact from './Contact'
 
 function PageContact() {
     return (
-        <Layout>
+        <Layout >
             <Contact/>
         </Layout>
     )

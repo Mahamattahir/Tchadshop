@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from '@inertiajs/inertia-react';
 import { useEffect, useRef } from 'react';
+import buttonAchetez from './bouttonachat';
 export function generateProductItems(products) {
     return products.map((product) => (
 
@@ -19,14 +20,11 @@ export function generateProductItems(products) {
                         <h5>{product.Price * 0.75}FCFA</h5><h6 className="text-muted ml-2"><del>{product.Price}FCFA</del></h6>
                     </div>
                     < div className="d-flex align-items-center justify-content-center mb-1">
-                        <div className='BtnContact'>
-                            <p className="text-dark mr-1">
-                                <button className="btn py-2 px-4" type="submit" id="sendMessageButton"><Link style={{ textDecoration: 'none', color: '#fff' }} to="/commander">Acheter</Link>
-                                </button>
-                            </p>
-                        </div>
+                       {/* ici */}
+                       {buttonAchetez()}
                     </div>
                 </div>
+
             </div>
         </div>
     ));

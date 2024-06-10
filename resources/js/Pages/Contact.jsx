@@ -7,7 +7,7 @@ function Contact() {
     return (
 
 <div className="container-fluid" id="contact">
-            <h2 className="section-title position-relative text-uppercase mx-xl-5 mb-4">
+            <h2  style={{ textAlign:'center' }} className="section-title position-relative text-uppercase mx-xl-5 mb-4">
                 <span className="bg-light pr-3" style={{ color: 'rgb(133, 41, 205)' }}>Contactez Nous</span>
             </h2>
             <div className="row px-xl-5">

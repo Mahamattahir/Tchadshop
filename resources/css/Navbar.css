@@ -67,10 +67,12 @@
     border-radius: 50%;
     padding-left: 12px;
     margin-right: 10px;
+
 }
 
 .search__icon:hover {
     border-left: 3px solid white;
+
 }
 
 .search__icon path {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import bouttonLogin from './btnLogin';
 function MonCompte() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => {
@@ -23,8 +23,7 @@ function MonCompte() {
                 </div>
             </Dropdown.Toggle>
             <Dropdown.Menu show={isOpen} className="dropdown-menu-center">
-                <Dropdown.Item href="/inscription" className="dropdown-item">S'inscrire</Dropdown.Item>
-                <Dropdown.Item href="/connexion" className="dropdown-item">Connexion</Dropdown.Item>
+                {bouttonLogin()}
             </Dropdown.Menu>
         </Dropdown>
     );

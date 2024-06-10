@@ -10,7 +10,9 @@ function Navbar({ categories = [] }) {
     const Linkpages = [
         { label: "Accueil", to: '/', icon: faHome },
         { label: "Produits", to: '/detail', icon: faBox },
-        { label: "Contact", to: '/contact', icon: faEnvelope }
+        { label: "Contact", to: '/contact', icon: faEnvelope },
+
+
     ];
     /**
      * Génère un lien de navigation avec une icône et un badge.
@@ -95,13 +97,22 @@ function Navbar({ categories = [] }) {
         };
 
         return (
-            <div className="d-lg-none d-block">
+            <div className="d-lg-none d-block  ">
                 {generateNavLink("fas fa-shopping-cart", 0)}
-                <FontAwesomeIcon className='gap btn px-0 ml-2 pt-3 border-0' icon={faSearch} onClick={toggleSearch} />
+                <FontAwesomeIcon className='  gap btn px-0 ml-2 pt-3 border-0' icon={faSearch} onClick={toggleSearch} />
                 {isSearchVisible && (
                     <input
+                    style={{
+                        padding: "10px",
+                        width: "100%",
+                        height: "99%",
+                        background: "linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%)",
+                        border: "none",
+                        fontSize: "20px",
+                        borderRadius: "50px"
+                                        }}
                         type="text"
-                        className={`input form-control mx-auto mb-1 ${isSearchVisible ? 'show' : 'hide'}`}
+                        className={` input form-control mx-auto mb-1 ${isSearchVisible ? 'show' : 'hide'}`}
                         placeholder="Rechercher des produits"
                     />
                 )}
@@ -173,15 +184,57 @@ function Navbar({ categories = [] }) {
                     <div className="col-lg-4">
                         <Logo />
                     </div>
-                    <div className="col-lg-4 col-6 text-left">
+                    <div
+                     className="col-lg-4 col-6 text-left">
                         <form action="">
                             <div className="input-group">
-                                <div className='containerInput'>
-                                    <div className='search-containerInput'>
-                                        <input type="text" className="input form-control mx-auto" placeholder="Rechercher des produits" />
+                                <div
+                                style={{
+                                    position: "relative",
+                                    borderRadius: "1000px",
+                                    padding: "10px",
+                                    display: "grid",
+                                    placeContent: "center",
+                                    ZIndex:" 0",
+                                    maxWidth: "500px",
+                                    margin: "0 10px"
+                                 }}
+                                className='containerInput'>
+                                    <div
+                                    style={{
+                                        position: "relative",
+                                        width: "100%",
+                                        borderRadius: "50px",
+                                        background: "linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%)",
+                                        padding: "5px",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        maxHeight: "45px",
+                                     }}
+                                    className='search-containerInput'>
+                                        <input   style={{
+                        padding: "10px",
+                        width: "100%",
+                        height: "99%",
+                        background: "linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%)",
+                        border: "none",
+                        fontSize: "20px",
+                        borderRadius: "50px"
+                                        }}type="text" className="input form-control mx-auto" placeholder="Rechercher des produits" />
                                         <div className="input-group-append">
-                                            <span className="input-group-text bg-transparent text-primary">
-                                                <FontAwesomeIcon className='search__icon' icon={faSearch} />
+                                            <span style=
+                                                {{
+                                                    width: "50px",
+                                                    aspectRatio:" 1",
+                                                    borderLeft: "2px solid white",
+                                                    borderTop: "3px solid transparent",
+                                                    borderBottom: "3px solid transparent",
+                                                    borderRadius: "50%",
+                                                    paddingLeft: "12px",
+                                                    marginRight: "10px",
+                                                }}className="input-group-text bg-transparent text-primary">
+                                                <FontAwesomeIcon
+                                                 className='search__icon' icon={faSearch} />
                                             </span>
                                         </div>
                                     </div>

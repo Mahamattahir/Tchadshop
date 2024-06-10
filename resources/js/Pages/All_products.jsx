@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
 import Layout from './Layout';
+import buttonAchetez from './bouttonachat';
 
 function GenerAllProduct(products) {
     if (!products || products.length === 0) {
@@ -24,13 +25,7 @@ function GenerAllProduct(products) {
                         <h6 className="text-muted ml-2"><del>{product.Price} FCFA</del></h6>
                     </div>
                     <div className="d-flex align-items-center justify-content-center mb-1">
-                        <div className='BtnContact'>
-                            <p className="text-dark mr-1">
-                                <button className="btn py-2 px-4" type="submit" id="sendMessageButton">
-                                    <Link style={{ textDecoration: 'none', color: '#fff' }} to="/commander">Acheter</Link>
-                                </button>
-                            </p>
-                        </div>
+                      {buttonAchetez()}
                     </div>
                 </div>
             </div>
@@ -111,9 +106,9 @@ function ProductForAll({ products }) {
 }
 
 
-function All_products({ products }) {
+function All_products({categories, products }) {
     return (
-        <Layout>
+        <Layout categories={categories}>
             <div style={{ paddingTop: '10px' }}>
                 <ProductDetailbody products={products} />
             </div>
