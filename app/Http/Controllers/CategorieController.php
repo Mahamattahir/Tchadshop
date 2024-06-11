@@ -10,16 +10,18 @@ use Inertia\Inertia;
 
 class CategorieController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Categorie::all();
-        $products = Product::orderBy('id','desc')->take(8)->get();
 
+
+        $categories = Categorie::all();
+        $products=Product::all();
 
         return Inertia::render('Home', [
             'categories' => $categories,
             'products' => $products
         ]);
     }
+
 
 }

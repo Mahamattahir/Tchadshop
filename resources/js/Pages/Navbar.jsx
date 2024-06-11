@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/react';
 import Logo from './Logo';
 import MonCompte from './MonCompte';
 
-function Navbar({ categories = [] }) {
+function Navbar({ categories = [],search, setSearch }) {
     const Linkpages = [
         { label: "Accueil", to: '/', icon: faHome },
         { label: "Produits", to: '/detail', icon: faBox },
@@ -152,26 +152,27 @@ function Navbar({ categories = [] }) {
         );
     }
 
-    const [isNavbarFixed, setIsNavbarFixed] = useState(false);
+    // const [isNavbarFixed, setIsNavbarFixed] = useState(false);
 
-    const handleScroll = () => {
-        const containerCoordinates = document.querySelector('.LabardeNavtop').getBoundingClientRect();
-        if (containerCoordinates.top <= 0) {
-            setIsNavbarFixed(true);
-        } else {
-            setIsNavbarFixed(false);
-        }
-    };
+    // const handleScroll = () => {
+    //     const containerCoordinates = document.querySelector('.LabardeNavtop').getBoundingClientRect();
+    //     if (containerCoordinates.top <= 0) {
+    //         setIsNavbarFixed(true);
+    //     } else {
+    //         setIsNavbarFixed(false);
+    //     }
+    // };
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    // useEffect(() => {
+    //     window.addEventListener('scroll', handleScroll);
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
+
 
     return (
-        <div className='BardeNavtigation'>
+        <div className='BardeNavtigation fixed-top'>
             <div className="LabardeNavtop container-fluid">
                 <div style={{ backgroundColor: '#bc9fea' }} className="shadow-bottom row py-1 px-xl-5 d-block d-lg-none">
                     <div className="col-lg-6 text-center text-lg-right">
@@ -220,7 +221,9 @@ function Navbar({ categories = [] }) {
                         border: "none",
                         fontSize: "20px",
                         borderRadius: "50px"
-                                        }}type="text" className="input form-control mx-auto" placeholder="Rechercher des produits" />
+                                        }}
+                                        onChange={(e)=>setSearch(e.target.value)}
+                                        type="text" className="input form-control mx-auto" placeholder="Rechercher des produits" />
                                         <div className="input-group-append">
                                             <span style=
                                                 {{
@@ -248,7 +251,7 @@ function Navbar({ categories = [] }) {
                     </div>
                 </div>
             </div>
-            <div className={`LabardeNavbottom mb-0 ${isNavbarFixed ? 'fixed-top' : ''}`}>
+            <div className="LabardeNavbottom mb-0">
                 <div className="row px-xl-5">
                     <DropdownCategorie />
                     <div className="col-lg-9">

@@ -3,14 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faShippingFast } from '@fortawesome/free-solid-svg-icons'
 import Produits from './ProductsFroHome'
 
-function Corp({ products }) {
+function Corp({ products ,search}) {
+
+
     /**
      * Genere deux text avec icon a l'entre du corp
-     * @param {icon} iconTitle 
-     * @param {string} text 
+     * @param {icon} iconTitle
+     * @param {string} text
      * @returns  {JSX.Element}
      */
     function generateTopBodyTitle(iconTitle, text) {
+
         return (
             <div className="col-lg col-md-6 col-sm-12 pb-1">
                 <div className="d-flex align-items-center justify-content-center  bg-light mb-4" style={{ padding: '30px' }}>
@@ -31,12 +34,12 @@ function Corp({ products }) {
 
                 </div>
             </div>
-            <Produits products={products} />
+            <Produits products={products} search={search} />
         </div>
     )
 }
 
-export default Corp
+export default Corp;
 
 
 

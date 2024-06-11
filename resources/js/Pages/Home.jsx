@@ -4,13 +4,13 @@ import Hero from './Hero';
 import Corp from './BodyForHome';
 import Contact from './Contact';
 
-const Home = ({ categories, products }) => {
+const Home = ({ categories, products,search}) => {
     return (
         <Layout categories={categories} >
             <Hero />
-            <Corp products={products} />
+            <Corp products={products} search={search} />
 
-<Contact/>
+            <Contact/>
         </Layout>
     );
 };

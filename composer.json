@@ -8,6 +8,7 @@
         "php": "^8.2",
         "inertiajs/inertia-laravel": "^1.2",
         "laravel/framework": "^11.0",
+        "laravel/scout": "^10.9",
         "laravel/tinker": "^2.9",
         "spatie/laravel-medialibrary": "^11.5"
     },

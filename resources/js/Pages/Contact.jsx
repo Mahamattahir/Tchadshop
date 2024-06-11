@@ -1,7 +1,5 @@
 import React from 'react';
-
-
-
+import Map from './Maps';
 function Contact() {
 
     return (
@@ -18,9 +16,7 @@ function Contact() {
                     </div>
                 </div>
                 <div className="col-lg-5 mb-5">
-                    <div className="bg-light p-30 mb-30">
-                        <iframe style={{ width: '100%', height: '250px' }} src="https://www.openstreetmap.org/#map=12/12.1536/14.9912" frameBorder="0" allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe>
-                    </div>
+                  <Map/>
 
                 </div>
             </div>

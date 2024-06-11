@@ -1,10 +1,15 @@
-import React from 'react'
-import { Link } from '@inertiajs/inertia-react';
-import { useEffect, useRef } from 'react';
+// Produits.jsx
+import React, { useEffect, useRef } from 'react';
+import { Link } from '@inertiajs/react';
 import buttonAchetez from './bouttonachat';
-export function generateProductItems(products) {
-    return products.map((product) => (
 
+export function generateProductItems(products, search) {
+    const produitsAffiches = products.slice(0, 8);
+
+    return produitsAffiches.filter((product) => {
+        return search.toLowerCase() === '' ? product : product.Name.toLowerCase().includes(search.toLowerCase());
+    })
+    .map((product) => (
         <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 pb-1">
             <div className="product-item bg-light mb-4" style={{ boxShadow: ' 0 0 10px rgba(0, 0, 0, 0.2)' }}>
                 <div className="product-img position-relative overflow-hidden">
@@ -20,19 +25,17 @@ export function generateProductItems(products) {
                         <h5>{product.Price * 0.75}FCFA</h5><h6 className="text-muted ml-2"><del>{product.Price}FCFA</del></h6>
                     </div>
                     < div className="d-flex align-items-center justify-content-center mb-1">
-                       {/* ici */}
                        {buttonAchetez()}
                     </div>
                 </div>
-
             </div>
         </div>
     ));
 }
 
-
-function Produits({ products = [] }) {
+function Produits({ products, search }) {
     const observer = useRef(null);
+
     useEffect(() => {
         observer.current = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -57,32 +60,20 @@ function Produits({ products = [] }) {
         };
     }, []);
 
-
-
     return (
         <div>
-
-
             <div className="container-fluid pt-5 pb-3">
                 <h2 style={{ color: 'rgb(133, 41, 205)' }}
                     className="text-center section-title position-relative text-uppercase mx-xl-5 mb-4"
                 >
                     <span className="bg-light pr-3">PRODUITS VEDETTES</span>
                 </h2>
-                <div className='row px-xl-5'>
-                    {generateProductItems(products)}
-
+                <div className="row px-xl-5">
+                    {generateProductItems(products, search)}
                 </div>
-
-
             </div>
-        </div >
-
-
-
-
-    )
+        </div>
+    );
 }
 
-
-export default Produits
+export default Produits;
