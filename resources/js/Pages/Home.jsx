@@ -6,7 +6,7 @@ import Contact from './Contact';
 
 const Home = ({ categories, products,search}) => {
     return (
-        <Layout categories={categories} >
+        <Layout  categories={categories} >
             <Hero />
             <Corp products={products} search={search} />
 

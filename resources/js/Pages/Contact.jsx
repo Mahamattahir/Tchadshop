@@ -4,7 +4,7 @@ function Contact() {
 
     return (
 
-<div className="container-fluid" id="contact">
+<div style={{ paddingTop: '10%' }}  className="container-fluid" id="contact">
             <h2  style={{ textAlign:'center' }} className="section-title position-relative text-uppercase mx-xl-5 mb-4">
                 <span className="bg-light pr-3" style={{ color: 'rgb(133, 41, 205)' }}>Contactez Nous</span>
             </h2>

@@ -2,11 +2,19 @@
 
 namespace App\Models;
 
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-class Product extends Model implements HasMedia
+
+class Product extends Model
 {
-    use InteractsWithMedia;
-    protected $fillable = ['Name','Description','Price','category_id','image_url'];
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'category_id',
+    ];
+
+
 }

@@ -4,7 +4,7 @@ import Layout from './Layout';
 function Acheter() {
     return (
         <Layout>
-            <div className="container-fluid pb-5">
+            <div style={{ paddingTop: '10%' }}  className="container-fluid pb-5">
                 <div className="row px-xl-5">
                   <GenereImg/>
                   <GenereTx/>

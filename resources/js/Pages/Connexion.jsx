@@ -31,7 +31,7 @@ export function SigninForm() {
     };
 
     return (
-        <div className='d-flex justify-content-center'>
+        <div style={{ paddingTop: "10%",paddingBottom:"2%" }}  className='d-flex justify-content-center'>
             <form onSubmit={handleSubmit} className="form_main  ">
                 <p className="heading">Connexion</p>
                 <div className="inputContainer">

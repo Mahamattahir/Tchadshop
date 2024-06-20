@@ -2,15 +2,20 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from '@inertiajs/react';
 import buttonAchetez from './bouttonachat';
+// import { handleclick } from './Navbar';
 
 export function generateProductItems(products, search) {
+
+
     const produitsAffiches = products.slice(0, 8);
 
     return produitsAffiches.filter((product) => {
+
         return search.toLowerCase() === '' ? product : product.Name.toLowerCase().includes(search.toLowerCase());
     })
     .map((product) => (
-        <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 pb-1">
+
+        <div key={product.id} className="col-lg-3 col-md-6 col-sm-3 pb-1">
             <div className="product-item bg-light mb-4" style={{ boxShadow: ' 0 0 10px rgba(0, 0, 0, 0.2)' }}>
                 <div className="product-img position-relative overflow-hidden">
                     <img className="img-fluid w-100" src={`/storage/${product.image_url}`} alt={product.Name} />

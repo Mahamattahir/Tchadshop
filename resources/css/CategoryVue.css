@@ -1,0 +1,12 @@
+
+.categoryFilterProducts{
+    padding:10% 10% 0 10%;
+
+}
+@media (max-width:576px){
+    .categoryFilterProducts{
+
+        padding-top:50%;
+    }
+
+}

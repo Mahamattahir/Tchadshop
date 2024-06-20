@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faSearch, faHome, faBox, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faSearch, faHome, faBox, faBars ,faX} from '@fortawesome/free-solid-svg-icons';
 import { Dropdown } from 'react-bootstrap';
 import { Link } from '@inertiajs/react';
 import Logo from './Logo';
 import MonCompte from './MonCompte';
+//  export function handleclick(id,Name){
+//    console.log(id,Name)
+// }
 
-function Navbar({ categories = [],search, setSearch }) {
+function Navbar({ categories = [], search, setSearch }) {
     const Linkpages = [
         { label: "Accueil", to: '/', icon: faHome },
         { label: "Produits", to: '/detail', icon: faBox },
         { label: "Contact", to: '/contact', icon: faEnvelope },
-
-
     ];
-    /**
-     * Génère un lien de navigation avec une icône et un badge.
-     * Pour les produits aime et mit au panier
-     * @param {string} iconClass
-     * @param {number} badgeCount
-     * @returns {JSX.Element}
-     */
+
     function generateNavLink(iconClass, badgeCount) {
         return (
             <Link href="/" className="gap btn px-0 ml-2 pt-3" style={{ border: 'none' }}>
@@ -29,11 +24,7 @@ function Navbar({ categories = [],search, setSearch }) {
             </Link>
         );
     }
-   /**
-     * Genere les pages de bar de navigation en le parcourant sur le var Linkpages
-     * @param {String} pages
-     * @returns {JSX.Element}
-     */
+
     function generatePages(pages) {
         return pages.map((page, index) => (
             <div key={index} className='d-flex'>
@@ -44,12 +35,22 @@ function Navbar({ categories = [],search, setSearch }) {
         ));
     }
 
-    function generateDropdownCategorie(categories) {
+
+
+function generateDropdownCategorie(categories) {
+
+    // Fonction de gestion des clics
+            const handleClick = (id) => {
+                // Redirige l'utilisateur vers une route Laravel dynamique
+                window.location.href = `/${id}`;
+            };
         return categories.map((categorie) => (
-            <Dropdown.Toggle key={categorie.id} as={Link} to="" className="d-flex align-items-center nav-link dropdown-toggle text-dark">
+            <Dropdown.Toggle key={categorie.id} as={Link} onClick={() => handleClick(categorie.id)}  className="d-flex align-items-center nav-link dropdown-toggle text-dark">
                 {categorie.Name}
             </Dropdown.Toggle>
+
         ));
+
     }
 
     function DropdownCategorie() {
@@ -96,25 +97,39 @@ function Navbar({ categories = [],search, setSearch }) {
             setIsSearchVisible(!isSearchVisible);
         };
 
+        const change=(e)=>{
+            setSearch(e.target.value);
+        }
+        const handleSubmit=(e)=>{
+            e.preventDefault();
+        }
+
         return (
-            <div className="d-lg-none d-block  ">
+            <div className="d-lg-none d-block">
                 {generateNavLink("fas fa-shopping-cart", 0)}
-                <FontAwesomeIcon className='  gap btn px-0 ml-2 pt-3 border-0' icon={faSearch} onClick={toggleSearch} />
+                <FontAwesomeIcon className='gap btn px-0 ml-2 pt-3 border-0' icon={faSearch} onClick={toggleSearch}  />
                 {isSearchVisible && (
-                    <input
-                    style={{
-                        padding: "10px",
-                        width: "100%",
-                        height: "99%",
-                        background: "linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%)",
-                        border: "none",
-                        fontSize: "20px",
-                        borderRadius: "50px"
-                                        }}
-                        type="text"
-                        className={` input form-control mx-auto mb-1 ${isSearchVisible ? 'show' : 'hide'}`}
-                        placeholder="Rechercher des produits"
-                    />
+                    <form action=''  >
+                        <input
+                        onSubmit={handleSubmit}
+                         onChange={change}
+                         value={search}
+                            style={{
+                                padding: "10px",
+                                width: "100%",
+                                height: "99%",
+                                background: "linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%)",
+                                border: "none",
+                                fontSize: "20px",
+                                borderRadius: "50px"
+                            }}
+
+
+                            type="text"
+                            className={`input form-control mx-auto mb-1 ${isSearchVisible ? 'show' : 'hide'}`}
+                            placeholder="Rechercher des produits"
+                        />
+                    </form>
                 )}
             </div>
         );
@@ -152,25 +167,6 @@ function Navbar({ categories = [],search, setSearch }) {
         );
     }
 
-    // const [isNavbarFixed, setIsNavbarFixed] = useState(false);
-
-    // const handleScroll = () => {
-    //     const containerCoordinates = document.querySelector('.LabardeNavtop').getBoundingClientRect();
-    //     if (containerCoordinates.top <= 0) {
-    //         setIsNavbarFixed(true);
-    //     } else {
-    //         setIsNavbarFixed(false);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll);
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
-
-
     return (
         <div className='BardeNavtigation fixed-top'>
             <div className="LabardeNavtop container-fluid">
@@ -185,59 +181,64 @@ function Navbar({ categories = [],search, setSearch }) {
                     <div className="col-lg-4">
                         <Logo />
                     </div>
-                    <div
-                     className="col-lg-4 col-6 text-left">
+                    <div className="col-lg-4 col-6 text-left">
                         <form action="">
                             <div className="input-group">
                                 <div
-                                style={{
-                                    position: "relative",
-                                    borderRadius: "1000px",
-                                    padding: "10px",
-                                    display: "grid",
-                                    placeContent: "center",
-                                    ZIndex:" 0",
-                                    maxWidth: "500px",
-                                    margin: "0 10px"
-                                 }}
-                                className='containerInput'>
-                                    <div
                                     style={{
                                         position: "relative",
-                                        width: "100%",
-                                        borderRadius: "50px",
-                                        background: "linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%)",
-                                        padding: "5px",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        maxHeight: "45px",
-                                     }}
-                                    className='search-containerInput'>
-                                        <input   style={{
-                        padding: "10px",
-                        width: "100%",
-                        height: "99%",
-                        background: "linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%)",
-                        border: "none",
-                        fontSize: "20px",
-                        borderRadius: "50px"
+                                        borderRadius: "1000px",
+                                        padding: "10px",
+                                        display: "grid",
+                                        placeContent: "center",
+                                        zIndex: "0",
+                                        maxWidth: "500px",
+                                        margin: "0 10px"
+                                    }}
+                                    className='containerInput'>
+                                    <div
+                                        style={{
+                                            position: "relative",
+                                            width: "100%",
+                                            borderRadius: "50px",
+                                            background: "linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%)",
+                                            padding: "5px",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            maxHeight: "45px",
                                         }}
-                                        onChange={(e)=>setSearch(e.target.value)}
-                                        type="text" className="input form-control mx-auto" placeholder="Rechercher des produits" />
+                                        className='search-containerInput'>
+                                        <input style={{
+                                            padding: "10px",
+                                            width: "100%",
+                                            height: "99%",
+                                            background: "linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%)",
+                                            border: "none",
+                                            fontSize: "20px",
+                                            borderRadius: "50px"
+                                        }}
+                                            onChange={(e) => setSearch(e.target.value)}
+                                            value={search}
+                                            type="text" className="input form-control mx-auto" placeholder="Rechercher des produits" />
                                         <div className="input-group-append">
-                                            <span style=
-                                                {{
-                                                    width: "50px",
-                                                    aspectRatio:" 1",
-                                                    borderLeft: "2px solid white",
-                                                    borderTop: "3px solid transparent",
-                                                    borderBottom: "3px solid transparent",
-                                                    borderRadius: "50%",
-                                                    paddingLeft: "12px",
-                                                    marginRight: "10px",
-                                                }}className="input-group-text bg-transparent text-primary">
+                                            <span style={{
+                                                width: "50px",
+                                                aspectRatio: "1",
+                                                borderLeft: "2px solid white",
+                                                borderTop: "3px solid transparent",
+                                                borderBottom: "3px solid transparent",
+                                                borderRadius: "50%",
+                                                paddingLeft: "12px",
+                                                marginRight: "10px",
+                                            }} className="input-group-text bg-transparent text-primary">
+
+
+
                                                 <FontAwesomeIcon
-                                                 className='search__icon' icon={faSearch} />
+                                                 onClick={()=>{setSearch('')}}
+                                                    className='search__icon' icon={faSearch} />
+                                                    {/* <FontAwesomeIcon className='reset' icon={faX}/> */}
+
                                             </span>
                                         </div>
                                     </div>

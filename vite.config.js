@@ -25,6 +25,7 @@ export default defineConfig({
                 'resources/css/style.css',
                 'resources/css/style.min.css',
                 'resources/css/footer.css',
+                'resources/css/CategoryVue.css',
 
                 ...glob.sync('resources/sass/**/*.scss'),
                 ...glob.sync('resources/scss/bootstrap/scss/mixins/**/*.scss'),

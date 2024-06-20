@@ -50,15 +50,15 @@ function ProductDetailbody({ products }) {
                     <FilterPrice />
                     <ProductForAll products={products} />
                     <div className='col-12'>
-                        <nav>
-                            <ul className="pagination justify-content-center">
-                                <li className="page-item disabled"><a className="page-link" href="#"><span>Pages</span></a></li>
-                                <li className="page-item active"><a className="page-link" href="#">1</a></li>
-                                <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                <li className="page-item"><a className="page-link" href="#">Next</a></li>
+
+                       <ul className="pagination justify-content-center">
+                                <li className="page-item disabled"><Link className="page-link" href="#"><span>Pages</span></Link></li>
+                                <li className="page-item  active"><Link className="page-link" href="#">1</Link></li>
+                                <li className="page-item "><Link className="page-link" href="#">2</Link></li>
+                                <li className="page-item"><Link className="page-link" href="#">3</Link></li>
+                                <li className="page-item"><Link className="page-link" href="#">Suivant</Link></li>
                             </ul>
-                        </nav>
+
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@ function ProductForAll({ products }) {
 function All_products({categories, products }) {
     return (
         <Layout categories={categories}>
-            <div style={{ paddingTop: '10px' }}>
+            <div style={{ paddingTop: '10%' }}>
                 <ProductDetailbody products={products} />
             </div>
         </Layout>

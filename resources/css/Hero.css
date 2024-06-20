@@ -65,3 +65,12 @@
     background: linear-gradient(0deg, #cfc0ff 0%, #cfc0ff 100%);
     z-index: -2;
 }
+@media (max-width:576px){
+    .slider_section {
+        padding-Top:70%;
+    }
+     .slider_container{
+        margin-top:50px;
+    }
+
+}

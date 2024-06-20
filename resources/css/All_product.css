@@ -1,0 +1,6 @@
+.page-link {
+    color:#000 !important;
+}
+.page-item .active{
+    background-color: red;
+}

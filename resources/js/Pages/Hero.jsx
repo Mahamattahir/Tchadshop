@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 
 
 /**
- * Le sloagnt et boutton de hero 
+ * Le sloagnt et boutton de hero
  * @returns {JSX.Element}
  */
 const Hero = () => {
@@ -13,7 +13,7 @@ const Hero = () => {
         event.target.style.transform = 'translateY(0)';
     }
     return (
-        <section className="slider_section " >
+        <section style={{ paddingTop: '5%' }}  className="slider_section " >
             <div className="slider_container ">
                 <div id="carouselExampleIndicators " className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner ">
