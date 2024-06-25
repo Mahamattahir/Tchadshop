@@ -5,10 +5,6 @@ import { Dropdown } from 'react-bootstrap';
 import { Link } from '@inertiajs/react';
 import Logo from './Logo';
 import MonCompte from './MonCompte';
-//  export function handleclick(id,Name){
-//    console.log(id,Name)
-// }
-
 function Navbar({ categories = [], search, setSearch }) {
     const Linkpages = [
         { label: "Accueil", to: '/', icon: faHome },
@@ -18,9 +14,9 @@ function Navbar({ categories = [], search, setSearch }) {
 
     function generateNavLink(iconClass, badgeCount) {
         return (
-            <Link href="/" className="gap btn px-0 ml-2 pt-3" style={{ border: 'none' }}>
+            <Link href="/panier" className="gap btn px-0 ml-2 pt-3" style={{ border: 'none' }}>
                 <i className={iconClass + " text-dark"}></i>
-                <span className="badge text-dark border ml-2 border-dark rounded-circle">{badgeCount}</span>
+                <span  className="badge text-dark border ml-2 border-dark rounded-circle">{badgeCount}</span>
             </Link>
         );
     }
@@ -38,7 +34,6 @@ function Navbar({ categories = [], search, setSearch }) {
 
 
 function generateDropdownCategorie(categories) {
-
     // Fonction de gestion des clics
             const handleClick = (id) => {
                 // Redirige l'utilisateur vers une route Laravel dynamique
@@ -123,8 +118,6 @@ function generateDropdownCategorie(categories) {
                                 fontSize: "20px",
                                 borderRadius: "50px"
                             }}
-
-
                             type="text"
                             className={`input form-control mx-auto mb-1 ${isSearchVisible ? 'show' : 'hide'}`}
                             placeholder="Rechercher des produits"
@@ -231,14 +224,9 @@ function generateDropdownCategorie(categories) {
                                                 paddingLeft: "12px",
                                                 marginRight: "10px",
                                             }} className="input-group-text bg-transparent text-primary">
-
-
-
                                                 <FontAwesomeIcon
                                                  onClick={()=>{setSearch('')}}
                                                     className='search__icon' icon={faSearch} />
-                                                    {/* <FontAwesomeIcon className='reset' icon={faX}/> */}
-
                                             </span>
                                         </div>
                                     </div>

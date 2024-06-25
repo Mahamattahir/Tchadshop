@@ -1,21 +1,27 @@
 import { Link } from '@inertiajs/react';
 
-
 /**
- * Le sloagnt et boutton de hero
+ * Le slogan et bouton de hero
  * @returns {JSX.Element}
  */
-const Hero = () => {
+const Hero = ({ search }) => {
+
     const handleHover = (event) => {
         event.target.style.transform = 'translateY(-3px)';
     }
     const handleMouseLeave = (event) => {
         event.target.style.transform = 'translateY(0)';
     }
+
+    // Conditionner l'affichage de la section en fonction de search
+    if (search.length > 0) {
+        return null;
+    }
+
     return (
-        <section style={{ paddingTop: '5%' }}  className="slider_section " >
+        <section style={{ paddingTop: '5%' }} className="slider_section">
             <div className="slider_container ">
-                <div id="carouselExampleIndicators " className="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner ">
                         <div className="carousel-item active ">
                             <div className="container-fluid" style={{ marginLeft: '-20px' }}>
@@ -34,7 +40,6 @@ const Hero = () => {
                                                 onMouseEnter={handleHover}
                                                 onMouseLeave={handleMouseLeave}
                                                 style={{ transition: 'transform 0.3s ease' }}
-
                                             >
                                                 Parcourir
                                             </Link>
@@ -53,7 +58,6 @@ const Hero = () => {
                 </div>
             </div>
         </section>
-
     );
 };
 

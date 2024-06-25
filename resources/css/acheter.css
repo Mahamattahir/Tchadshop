@@ -5,6 +5,6 @@
 }
 
 .btnCommander:hover {
-    background-color: rgb(133, 41, 205);
-    color: white;
+    background-color: rgb(133, 41, 205) !;
+    color: white ;
 }

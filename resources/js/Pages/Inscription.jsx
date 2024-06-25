@@ -1,60 +1,112 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from '@inertiajs/inertia-react';
 import Layout from './Layout';
-import { useState } from 'react';
 
 function Inscription() {
     return (
-        <Layout>
-
-           <LoginForm/>
-        </Layout>
-    );
-}
-function LoginForm() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value);
-    };
-
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Insérer ici la logique de soumission du formulaire
-    };
-
-    return (
-        <div style={{ paddingTop: "10%",paddingBottom:"2%" }} className='d-flex justify-content-center'>
-            <form onSubmit={handleSubmit} className="form_main  ">
-                <p className="heading">S'inscrire</p>
-                <div className="inputContainer">
-
-                    <input type="text" className="inputField" id="Name" placeholder="Votre Nom" value={username} onChange={handleUsernameChange} />
-                </div>
-                <div className='inputContainer'>
-                    <svg className="inputIcon" xmlns="http://www.w3.org/2000/svg" width="34" height="16" fill="#2e2e2e" viewBox="0 0 16 16">
-                        <path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"></path>
-                    </svg>
-                    <input type="email" className='inputField' id='e-amil' placeholder='Votre e-mail' />
-                </div>
-                <div className="inputContainer">
-                    <svg className="inputIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2e2e2e" viewBox="0 0 16 16">
-                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
-                    </svg>
-                    <input type="password" className="inputField" id="password" placeholder="Mot de passe" value={password} onChange={handlePasswordChange} />
-                </div>
-
-                <button type="submit" id="button">Cree un compte</button>
-
-
-            </form>
-        </div>
-
-    );
+       <Layout>
+           <div id="success"></div>
+            <LoginForm/>
+       </Layout>
+    )
 }
 
 export default Inscription;
+
+
+function LoginForm() {
+    const { data, setData, post, reset, errors } = useForm({
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: ''
+    });
+
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    function submit(e) {
+        e.preventDefault();
+        post('/inscriptionPost', {
+            preserveScroll: true,
+            onSuccess: () => {
+                setSuccessMessage('Votre message a été envoyé avec succès.');
+                setErrorMessage('');
+                reset();
+            },
+            onError: () => {
+                setErrorMessage('Une erreur est survenue. Veuillez réessayer.');
+                setSuccessMessage('');
+            }
+        });
+    }
+
+    return (
+        <div style={{ paddingTop: "10%", paddingBottom: "2%" }} className='d-flex justify-content-center'>
+
+            <form onSubmit={submit} className="form_main">
+            {successMessage && <div className="alert alert-success">{successMessage}</div>}
+            {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+                <p className="heading">S'inscrire</p>
+                <div className="inputContainer">
+                    <input
+                        type="text"
+                        className="inputField"
+                        id="name"
+                        placeholder="Votre Nom"
+                        value={data.name}
+                        onChange={e => setData('name', e.target.value)}
+                        name='name'
+                        required
+                    />
+                    <p className="help-block text-danger">{errors.name}</p>
+                </div>
+                <div className='inputContainer'>
+                    <input
+                        type="email"
+                        className='inputField'
+                        id='email'
+                        placeholder='Votre e-mail'
+                        value={data.email}
+                        onChange={e => setData('email', e.target.value)}
+                        name='email'
+                        required
+                    />
+                    <p className="help-block text-danger">{errors.email}</p>
+                </div>
+                <div className="inputContainer">
+                    <input
+                        type="password"
+                        className="inputField"
+                        id="password"
+                        placeholder="Mot de passe"
+                        value={data.password}
+                        onChange={e => setData('password', e.target.value)}
+                        name="password"
+                        required
+                    />
+                    <p className="help-block text-danger">{errors.password}</p>
+                </div>
+                <div className="inputContainer">
+                    <input
+                        type="password"
+                        className="inputField"
+                        id="password_confirmation"
+                        placeholder="Confirmez le mot de passe"
+                        value={data.password_confirmation}
+                        onChange={e => setData('password_confirmation', e.target.value)}
+                        name="password_confirmation"
+                        required
+                    />
+                    <p className="help-block text-danger">{errors.password_confirmation}</p>
+                </div>
+                <button
+                type="submit"
+                id="button"
+                >
+                    Créer un compte
+                </button>
+            </form>
+        </div>
+    );
+}
+

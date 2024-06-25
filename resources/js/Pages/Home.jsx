@@ -5,6 +5,7 @@ import Corp from './BodyForHome';
 import Contact from './Contact';
 
 const Home = ({ categories, products,search}) => {
+
     return (
         <Layout  categories={categories} >
             <Hero />

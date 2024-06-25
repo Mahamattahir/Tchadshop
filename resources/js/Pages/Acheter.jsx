@@ -55,7 +55,7 @@ function GenereTx() {
                             <input type="email" className='inputField' id='e-amil' placeholder='Votre e-mail' />
                         </div>
                         <div className="inputContainer">
-                            <input type="number" className="inputField" id="numero" placeholder="Votre numero" />
+                            <input type="tel"  pattern="[0-9]{10}" className="inputField" id="numero" placeholder="Votre numero" required />
                         </div>
                         <div className="inputContainer">
                             <input type="text" className="inputField" id="Name" placeholder="Adresse De Livraison" />
@@ -82,7 +82,10 @@ function GenereTx() {
                     <button
                         onMouseEnter={handleHover}
                         onMouseLeave={handleMouseLeave}
-                        style={{ transition: 'transform 0.3s ease' }}
+                        style={{ transition: 'transform 0.3s ease'
+
+
+                        }}
                         className="btnCommander btn px-3">
                         <i className="fa fa-shopping-cart mr-1"></i>
                         Commander

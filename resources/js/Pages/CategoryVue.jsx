@@ -9,9 +9,8 @@ const CategoryVue = ({categories}) => {
     return (
         <Layout categories={categories}  >
             <div
-
             className='categoryFilterProducts' >
-                <ProduitsFilterCategory />
+                <ProduitsFilterCategory  />
             </div>
         </Layout>
     );
@@ -20,6 +19,7 @@ const CategoryVue = ({categories}) => {
 export default CategoryVue;
 
 const ProduitsFilterCategory = () => {
+
     const { products, categoryId } = usePage().props;
     const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -27,16 +27,15 @@ const ProduitsFilterCategory = () => {
         if (products && categoryId) {
             const filtered = products.filter(product => product.category_id === parseInt(categoryId));
             setFilteredProducts(filtered);
-            console.log('Products:', products);
-            console.log('Category ID:', categoryId);
-            console.log('Filtered Products:', filtered);
+            // console.log('Products:', products);
+            // console.log('Category ID:', categoryId);
+            // console.log('Filtered Products:', filtered);
         }
     }, [categoryId, products]);
 
-    if (filteredProducts.length === 0) {
-        return <p>Aucun produit trouvé dans cette catégorie.</p>;
-    }
-
+    // if (filteredProducts.length === 0) {
+    //     return <p>Aucun produit trouvé dans cette catégorie.</p>;
+    // }
     return (
         <div className="d-flex flex-wrap">
             {filteredProducts.map((product) => (

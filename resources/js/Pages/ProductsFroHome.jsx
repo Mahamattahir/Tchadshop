@@ -5,15 +5,21 @@ import buttonAchetez from './bouttonachat';
 // import { handleclick } from './Navbar';
 
 export function generateProductItems(products, search) {
-
+console.log(search)
 
     const produitsAffiches = products.slice(0, 8);
+const filteredProducts = produitsAffiches.filter((product)=>{
+    return search.toLowerCase() === '' ? product : product.Name.toLowerCase().includes(search.toLowerCase());
 
-    return produitsAffiches.filter((product) => {
+})
+   if(filteredProducts.length===0){
+    return <div class="col-12 text-center alert alert-warning" role="alert">
+  Aucun produits existe
+  </div>
 
-        return search.toLowerCase() === '' ? product : product.Name.toLowerCase().includes(search.toLowerCase());
-    })
-    .map((product) => (
+   }
+
+   return filteredProducts.map((product) => (
 
         <div key={product.id} className="col-lg-3 col-md-6 col-sm-3 pb-1">
             <div className="product-item bg-light mb-4" style={{ boxShadow: ' 0 0 10px rgba(0, 0, 0, 0.2)' }}>
@@ -66,6 +72,7 @@ function Produits({ products, search }) {
     }, []);
 
     return (
+
         <div>
             <div className="container-fluid pt-5 pb-3">
                 <h2 style={{ color: 'rgb(133, 41, 205)' }}

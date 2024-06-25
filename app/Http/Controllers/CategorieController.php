@@ -10,7 +10,7 @@ use Inertia\Inertia;
 
 class CategorieController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $categories = Categorie::all();
         $products=Product::all();
