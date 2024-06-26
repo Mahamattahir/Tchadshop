@@ -9,9 +9,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return Inertia::render('PageContact', [
-            'contacts' => Contact::all()
-        ]);
+        return Inertia::render('PageContact');
     }
 
     public function store(Request $request)

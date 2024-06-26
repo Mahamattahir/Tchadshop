@@ -18,7 +18,7 @@ Route::post('/contactPost', [ContactController::class, 'store']);
 Route::get('/detail', [AllProductsController::class, 'index']);
 Route::get('/inscription', [InscriptionController::class, 'index'])->name('inscription');
 Route::post('/inscriptionPost', [InscriptionController::class, 'store']);
-Route::get('/connexion',[ConnexionController::class,'index']);
+Route::get('/connexion',[ConnexionController::class,'index'])->name(('connexion'));
 Route::get('/acheter',[CommandeController::class,'index']);
 Route::get('/profil',[ProfilController::class,'index']);
 Route::get('/{id}', [FilterCategory::class, 'showByCategory']);

@@ -1,14 +1,18 @@
 import React from 'react'
 import Layout from './Layout'
-
+import {usePage} from '@inertiajs/react';
 import { useState } from 'react';
 import { Link } from '@inertiajs/react';
 
 function Connexion() {
+    const { props } = usePage();
     return (
-      <Layout>
-            <SigninForm/>
-      </Layout>
+        <Layout >
+            <div>
+                {success && <div className="alert alert-success">{success}</div>}
+                <SigninForm />
+            </div>
+        </Layout>
     );
 }
 
@@ -27,11 +31,13 @@ export function SigninForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Insérer ici la logique de soumission du formulaire
     };
+    const { props } = usePage();
+    const { success } = props;
 
     return (
         <div style={{ paddingTop: "10%",paddingBottom:"2%" }}  className='d-flex justify-content-center'>
+            {success && <div className="alert alert-success">{success}</div>}
             <form onSubmit={handleSubmit} className="form_main  ">
                 <p className="heading">Connexion</p>
                 <div className="inputContainer">

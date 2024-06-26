@@ -22,6 +22,10 @@ function Contact() {
         </div>
     );
 }
+/**
+ *
+ * @returns formulaire de contact
+ */
 
 function ContactForm() {
     const handleHover = (event) => {
@@ -128,3 +132,113 @@ function ContactForm() {
 }
 
 export default Contact;
+
+
+
+/**
+ *
+ * @returns formulaire d'inscription
+ */
+export function LoginForm() {
+    const { data, setData, post, reset, errors } = useForm({
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: ''
+    });
+
+    const [successMessage, setSuccessMessage] = useState('');
+
+    function submit(e) {
+        e.preventDefault();
+        post('/inscriptionPost', {
+            preserveScroll: true,
+            onSuccess: () => {
+                setSuccessMessage('Votre compte a été créé avec succès.');
+                reset(); // Réinitialise tous les champs du formulaire
+            },
+            onError: () => {
+                setSuccessMessage('');
+            }
+        });
+    }
+
+    return (
+        <div style={{ paddingTop: "10%", paddingBottom: "2%" }} className='d-flex justify-content-center'>
+       {/* <div className='d-flex flex-column'>
+       {successMessage && <div className="alert alert-success">{successMessage}</div>}
+                {Object.keys(errors).length > 0 && (
+                    <div className="alert alert-danger">
+                        <ul>
+                            {Object.values(errors).map((error, index) => (
+                                <li key={index}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+       </div> */}
+            <form onSubmit={submit} className="form_main">
+
+                <p className="heading">S'inscrire</p>
+                <div className="inputContainer">
+                    <input
+                        type="text"
+                        className="inputField"
+                        id="name"
+                        placeholder="Votre Nom"
+                        value={data.name}
+                        onChange={e => setData('name', e.target.value)}
+                        name='name'
+                        required
+                    />
+                {errors.name && <div style={{ fontSize:'10px' }} className="inputContainer help-block text-danger">{errors.name}</div>}
+                </div>
+                <div className='inputContainer'>
+                    <input
+                        type="email"
+                        className='inputField'
+                        id='email'
+                        placeholder='Votre e-mail'
+                        value={data.email}
+                        onChange={e => setData('email', e.target.value)}
+                        name='email'
+                        required
+                    />
+                </div>
+                {errors.email && <div  style={{ fontSize:'10px' }} className="inputContainer help-block text-danger">{errors.email}</div>}
+
+                <div className="inputContainer">
+                    <input
+                        type="password"
+                        className="inputField"
+                        id="password"
+                        placeholder="Mot de passe"
+                        value={data.password}
+                        onChange={e => setData('password', e.target.value)}
+                        name="password"
+                        required
+                    />
+                </div>
+                {errors.password && <div  style={{ fontSize:'10px' }} className="inputContainer help-block text-danger">{errors.password}</div>}
+
+                <div className="inputContainer">
+                    <input
+                        type="password"
+                        className="inputField"
+                        id="password_confirmation"
+                        placeholder="Confirmez le mot de passe"
+                        value={data.password_confirmation}
+                        onChange={e => setData('password_confirmation', e.target.value)}
+                        name="password_confirmation"
+                        required
+                    />
+                </div>
+                {errors.password_confirmation && <div  style={{ fontSize:'10px' }} className="inputContainer help-block text-danger">{errors.password_confirmation}</div>}
+
+                <button type="submit" id="button">
+                    Créer un compte
+                </button>
+            </form>
+        </div>
+    );
+}
