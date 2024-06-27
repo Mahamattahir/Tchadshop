@@ -1,8 +1,10 @@
 import React from 'react';
 import { usePage, Link } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
-import buttonAchetez from './bouttonachat';
 import Layout from './Layout';
+import ButtonAchetez from './bouttonachat';
+
+
 
 const CategoryVue = ({categories}) => {
 
@@ -55,8 +57,7 @@ const ProduitsFilterCategory = () => {
                                 <h6 className="text-muted ml-2"><del>{product.Price} FCFA</del></h6>
                             </div>
                             <div className="d-flex align-items-center justify-content-center mb-1">
-                                {buttonAchetez()}
-                            </div>
+                            <ButtonAchetez key={product.id} product={product} />                            </div>
                         </div>
                     </div>
                 </div>

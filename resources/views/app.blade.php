@@ -29,6 +29,8 @@
     @vite(['resources/css/footer.css'])
     @vite(['resources/css/All_product.css'])
     @vite(['resources/css/CategoryVue.css'])
+    @vite(['resources/css/acheter.css'])
+    @vite(['resources/css/profil.css'])
     @inertiaHead
 </head>
 <body>

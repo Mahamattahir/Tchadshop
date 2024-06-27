@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faSearch, faHome, faBox, faBars ,faX} from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faSearch, faHome, faBox, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown } from 'react-bootstrap';
 import { Link } from '@inertiajs/react';
 import Logo from './Logo';
 import MonCompte from './MonCompte';
+
 function Navbar({ categories = [], search, setSearch }) {
     const Linkpages = [
         { label: "Accueil", to: '/', icon: faHome },
@@ -16,7 +17,7 @@ function Navbar({ categories = [], search, setSearch }) {
         return (
             <Link href="/panier" className="gap btn px-0 ml-2 pt-3" style={{ border: 'none' }}>
                 <i className={iconClass + " text-dark"}></i>
-                <span  className="badge text-dark border ml-2 border-dark rounded-circle">{badgeCount}</span>
+                <span className="badge text-dark border ml-2 border-dark rounded-circle">{badgeCount}</span>
             </Link>
         );
     }
@@ -31,21 +32,15 @@ function Navbar({ categories = [], search, setSearch }) {
         ));
     }
 
-
-
-function generateDropdownCategorie(categories) {
-    // Fonction de gestion des clics
-            const handleClick = (id) => {
-                // Redirige l'utilisateur vers une route Laravel dynamique
-                window.location.href = `/${id}`;
-            };
+    function generateDropdownCategorie(categories) {
+        const handleClick = (id) => {
+            window.location.href = `/${id}`;
+        };
         return categories.map((categorie) => (
-            <Dropdown.Toggle key={categorie.id} as={Link} onClick={() => handleClick(categorie.id)}  className="d-flex align-items-center nav-link dropdown-toggle text-dark">
+            <Dropdown.Toggle key={categorie.id} as={Link} onClick={() => handleClick(categorie.id)} className="d-flex align-items-center nav-link dropdown-toggle text-dark">
                 {categorie.Name}
             </Dropdown.Toggle>
-
         ));
-
     }
 
     function DropdownCategorie() {
@@ -87,28 +82,24 @@ function generateDropdownCategorie(categories) {
     }
 
     function SearchBar() {
-        const [isSearchVisible, setIsSearchVisible] = useState(false);
-        const toggleSearch = () => {
-            setIsSearchVisible(!isSearchVisible);
-        };
+        const [isSearchVisible, setSearchVisible] = useState(false);
 
-        const change=(e)=>{
-            setSearch(e.target.value);
-        }
-        const handleSubmit=(e)=>{
-            e.preventDefault();
-        }
+        const toggleSearch = (e) => {
+            e.stopPropagation(); // Empêche la propagation de l'événement
+            setSearchVisible(!isSearchVisible);
+        };
 
         return (
             <div className="d-lg-none d-block">
                 {generateNavLink("fas fa-shopping-cart", 0)}
-                <FontAwesomeIcon className='gap btn px-0 ml-2 pt-3 border-0' icon={faSearch} onClick={toggleSearch}  />
+                <FontAwesomeIcon
+                    className='gap btn px-0 ml-2 pt-3 border-0'
+                    icon={faSearch}
+                    onClick={toggleSearch}
+                />
                 {isSearchVisible && (
-                    <form action=''  >
+                    <form onClick={(e) => e.stopPropagation()}> {/* Empêche la propagation de l'événement */}
                         <input
-                        onSubmit={handleSubmit}
-                         onChange={change}
-                         value={search}
                             style={{
                                 padding: "10px",
                                 width: "100%",
@@ -118,9 +109,12 @@ function generateDropdownCategorie(categories) {
                                 fontSize: "20px",
                                 borderRadius: "50px"
                             }}
+                            onChange={(e) => setSearch(e.target.value)}
+                            value={search}
                             type="text"
-                            className={`input form-control mx-auto mb-1 ${isSearchVisible ? 'show' : 'hide'}`}
+                            className="input form-control mx-auto mb-1"
                             placeholder="Rechercher des produits"
+                            onClick={(e) => e.stopPropagation()} // Ajouté pour empêcher la propagation lors du clic sur l'input
                         />
                     </form>
                 )}
@@ -225,7 +219,6 @@ function generateDropdownCategorie(categories) {
                                                 marginRight: "10px",
                                             }} className="input-group-text bg-transparent text-primary">
                                                 <FontAwesomeIcon
-                                                 onClick={()=>{setSearch('')}}
                                                     className='search__icon' icon={faSearch} />
                                             </span>
                                         </div>

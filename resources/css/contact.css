@@ -10,3 +10,9 @@
     border-radius: 50px;
     box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.5)
 }
+
+@media (max-width:576px){
+    .contactSm{
+        padding-top:30%;
+    }
+}

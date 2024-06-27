@@ -1,6 +1,14 @@
 .page-link {
     color:#000 !important;
 }
-.page-item .active{
-    background-color: red;
+.AllProducts{
+    padding-top:10%;
+}
+
+@media (max-width:576px){
+    .AllProducts{
+
+        padding-top:35%;
+    }
+
 }

@@ -16,12 +16,8 @@ import Layout from './Layout';
 
  function ProfilePage() {
     return (
-
         <section >
-
             <MDBContainer className="py-5">
-
-
                 <MDBRow>
                     <MDBCol lg="4">
                         <MDBCard className="mb-4">
@@ -47,10 +43,10 @@ import Layout from './Layout';
                             <MDBCardBody>
                                 <MDBRow>
                                     <MDBCol sm="3">
-                                        <MDBCardText>Full Name</MDBCardText>
+                                        <MDBCardText>Nom</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
+                                        <MDBCardText className="text-muted"><input type='text' name='name' placeholder='nom' /></MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
@@ -59,34 +55,27 @@ import Layout from './Layout';
                                         <MDBCardText>Email</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">example@example.com</MDBCardText>
+                                        <MDBCardText className="text-muted"><input type='email' name='email' placeholder='email' /></MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
                                 <MDBRow>
                                     <MDBCol sm="3">
-                                        <MDBCardText>Phone</MDBCardText>
+                                        <MDBCardText>Numero</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
+                                        <MDBCardText className="text-muted"><input type='Tel'name='numero' placeholder='numero'  /></MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
-                                <MDBRow>
-                                    <MDBCol sm="3">
-                                        <MDBCardText>Mobile</MDBCardText>
-                                    </MDBCol>
-                                    <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
-                                    </MDBCol>
-                                </MDBRow>
-                                <hr />
+
+
                                 <MDBRow>
                                     <MDBCol sm="3">
                                         <MDBCardText>Address</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                                        <MDBCardText className="text-muted"><input type='text' name='address' placeholder='address' /></MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                             </MDBCardBody>
@@ -102,7 +91,9 @@ import Layout from './Layout';
 function Profil(){
     return (
        <Layout >
-         {ProfilePage()}
+        <div className='profilSm'>
+        {ProfilePage()}
+        </div>
        </Layout>
     )
 }

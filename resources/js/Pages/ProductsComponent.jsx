@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/react";
-import buttonAchetez from './bouttonachat';
+import ButtonAchetez from './bouttonachat';
 
 function GenerAllProduct(products,search) {
 
@@ -23,7 +23,7 @@ function GenerAllProduct(products,search) {
                         <h6 className="text-muted ml-2"><del>{product.Price} FCFA</del></h6>
                     </div>
                     <div className="d-flex align-items-center justify-content-center mb-1">
-                        {buttonAchetez()}
+                    <ButtonAchetez key={product.id} product={product} />
                     </div>
                 </div>
             </div>

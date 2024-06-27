@@ -164,19 +164,7 @@ export function LoginForm() {
     }
 
     return (
-        <div style={{ paddingTop: "10%", paddingBottom: "2%" }} className='d-flex justify-content-center'>
-       {/* <div className='d-flex flex-column'>
-       {successMessage && <div className="alert alert-success">{successMessage}</div>}
-                {Object.keys(errors).length > 0 && (
-                    <div className="alert alert-danger">
-                        <ul>
-                            {Object.values(errors).map((error, index) => (
-                                <li key={index}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-       </div> */}
+        <div className='d-flex justify-content-center'>
             <form onSubmit={submit} className="form_main">
 
                 <p className="heading">S'inscrire</p>

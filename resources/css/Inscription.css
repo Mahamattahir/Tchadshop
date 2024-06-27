@@ -105,3 +105,8 @@
 .forgotLink:hover {
     color: blueviolet;
 }
+@media (max-width:576px){
+    .inscriptionSm{
+        padding-top:15%;
+    }
+}

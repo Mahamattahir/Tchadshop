@@ -1,10 +1,20 @@
-.btnCommander {
+/* .btnCommander {
     background-color: rgb(133, 41, 205);
     color: white;
     border-radius: 50px;
 }
 
 .btnCommander:hover {
-    background-color: rgb(133, 41, 205) !;
+    background-color: rgb(133, 41, 205) ;
     color: white ;
+} */
+.AchterContainer{
+    padding-top:10%;
+}
+@media (max-width:576px){
+    .AchterContainer{
+
+        padding-top:35%;
+    }
+
 }

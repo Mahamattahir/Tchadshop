@@ -7,9 +7,9 @@ import { Link } from '@inertiajs/inertia-react';
 function FooterSection() {
 
     const Linkpages = [
-        { label: "Accueil", to: './Home.jsx' },
-        { label: "Produits", to: './Produits.jsx' },
-        { label: "Contact", to: './contact.jsx' }
+        { label: "Accueil", to: './' },
+        { label: "Produits", to: './detail' },
+        { label: "Contact", to: './contact' }
     ];
 
     const Apropostext = [
@@ -34,7 +34,7 @@ function FooterSection() {
                         <h5>Service</h5>
                         <div className='Apropos_list'>
                             {Linkpages.map((page, index) => (
-                                <Link key={index} to={page.to}>
+                                <Link key={index} href={page.to}>
                                     <FontAwesomeIcon icon={faAngleRight} /> {page.label}
                                 </Link>
                             ))}

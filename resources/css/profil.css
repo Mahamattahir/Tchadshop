@@ -1,0 +1,8 @@
+.profilSm{
+    padding-top:10%
+}
+@media (max-width:576px){
+    .profilSm{
+        padding-top:30%;
+    }
+}

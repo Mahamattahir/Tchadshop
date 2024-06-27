@@ -27,13 +27,16 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
         'web' => [
             HandleInertiaRequests::class,
-     
+
             // Ajoutez ici vos middlewares de groupe pour les routes web
         ],
 
-        'api' => [
-            // Ajoutez ici vos middlewares de groupe pour les routes API
-        ],
+    'api' => [
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    'throttle:api',
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+],
+
     ];
 
     /**

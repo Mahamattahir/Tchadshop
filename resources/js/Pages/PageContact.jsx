@@ -5,7 +5,9 @@ import Contact from './Contact'
 function PageContact() {
     return (
         <Layout >
-            <Contact/>
+           <div className='contactSm'>
+           <Contact/>
+           </div>
         </Layout>
     )
 }
