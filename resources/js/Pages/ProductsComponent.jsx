@@ -1,7 +1,8 @@
 import { Link } from "@inertiajs/react";
 import ButtonAchetez from './bouttonachat';
 
-function GenerAllProduct(products,search) {
+function GenerAllProduct({products,search}) {
+    console.log(search)
 
     if (!products || products.length === 0) {
         return <p>No products available</p>;
@@ -41,7 +42,7 @@ const ColorNumber = [
     { number: '10', color: '1M-5M' }
 ];
 
-function ProductDetailbody({ products,search}) {
+function ProductDetailbody(products,search) {
     return (
         <div>
             <div className="container-fluid">

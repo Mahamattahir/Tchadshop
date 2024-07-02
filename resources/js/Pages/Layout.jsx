@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import FooterSection from './Footer';
 
@@ -9,6 +9,10 @@ const Layout = ({ children, categories }) => {
     const childrenWithProps = React.Children.map(children, child => {
         return React.cloneElement(child, { search });
     });
+
+    useEffect(()=>{
+
+    },[])
 
     return (
         <div>

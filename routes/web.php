@@ -22,7 +22,9 @@ Route::post('/inscriptionPost', [InscriptionController::class, 'store']);
 Route::get('/connexion',[ConnexionController::class,'index'])->name(('connexion'));
 Route::get('/profil',[ProfilController::class,'index'])->name('profil')->middleware('auth');
 Route::get('/{id}', [FilterCategory::class, 'showByCategory']);
-Route::get('/panier',[CartController::class,'index']);
+
 Route::post('/connexionPost', [ConnexionController::class, 'login']);
 Route::get('/acheter/{id}', [AchatController::class, 'show'])->name('product.show');
+
+Route::get('/panier',[CartController::class,'index']);
 

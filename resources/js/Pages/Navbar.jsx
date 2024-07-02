@@ -82,12 +82,7 @@ function Navbar({ categories = [], search, setSearch }) {
     }
 
     function SearchBar() {
-        const [isSearchVisible, setSearchVisible] = useState(false);
 
-        const toggleSearch = (e) => {
-            e.stopPropagation(); // Empêche la propagation de l'événement
-            setSearchVisible(!isSearchVisible);
-        };
 
         return (
             <div className="d-lg-none d-block">
@@ -100,6 +95,7 @@ function Navbar({ categories = [], search, setSearch }) {
                 {isSearchVisible && (
                     <form onClick={(e) => e.stopPropagation()}> {/* Empêche la propagation de l'événement */}
                         <input
+                        autoFocus
                             style={{
                                 padding: "10px",
                                 width: "100%",
@@ -117,11 +113,18 @@ function Navbar({ categories = [], search, setSearch }) {
                             onClick={(e) => e.stopPropagation()} // Ajouté pour empêcher la propagation lors du clic sur l'input
                         />
                     </form>
-                )}
+             )}
             </div>
         );
     }
 
+
+    const [isSearchVisible, setSearchVisible] = useState(false);
+
+    const toggleSearch = (e) => {
+        e.stopPropagation(); // Empêche la propagation de l'événement
+        setSearchVisible(!isSearchVisible);
+    };
     const MobileNavbar = () => {
         const [collapseOpen, setCollapseOpen] = useState(false);
         const toggleCollapse = () => {

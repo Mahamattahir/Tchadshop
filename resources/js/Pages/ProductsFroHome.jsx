@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/react';
 import ButtonAchetez from './bouttonachat';
 
 export function generateProductItems(products, search) {
+
     const produitsAffiches = products.slice(0, 8);
     const filteredProducts = produitsAffiches.filter((product) => {
         return search.toLowerCase() === '' ? product : product.Name.toLowerCase().includes(search.toLowerCase());
