@@ -1,6 +1,10 @@
 .profilSm{
     padding-top:10%
 }
+.BtnContact{
+    width:50px;
+
+}
 @media (max-width:576px){
     .profilSm{
         padding-top:30%;

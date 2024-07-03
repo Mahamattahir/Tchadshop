@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FilterCategory;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\UserProfileController;
 
 
 Route::get('/', [CategorieController::class, 'index'])->name('home');
@@ -27,4 +28,11 @@ Route::post('/connexionPost', [ConnexionController::class, 'login']);
 Route::get('/acheter/{id}', [AchatController::class, 'show'])->name('product.show');
 
 Route::get('/panier',[CartController::class,'index']);
+Route::post('/logout', [ConnexionController::class, 'logout'])->name('logout');
 
+Route::middleware(['auth', 'web'])->group(function () {
+    Route::get('/profil',[ProfilController::class,'index'])->name('profil')->middleware('auth');
+    Route::post('/profile/update-photo', [UserProfileController::class, 'updatePhoto'])->name('profile.update-photo');
+    Route::post('/profile/update-info', [UserProfileController::class, 'updateInfo'])->name('profile.update-info');
+    Route::post('/logout', [ConnexionController::class, 'logout'])->name('logout');
+});

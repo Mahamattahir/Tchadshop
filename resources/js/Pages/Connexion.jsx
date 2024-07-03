@@ -16,25 +16,24 @@ function Connexion() {
 export default Connexion;
 
 export function SigninForm() {
-const {data,setData,post,reset,errors}=useForm({
-    email:'',
-    password:''
-});
-const [successMessage, setSuccessMessage] = useState('');
-function submit(e){
-    e.preventDefault();
-    post('/connexionPost',{
-        preserveScroll:true,
-        onSuccess:()=>{
-            setSuccessMessage('');
-            reset();
-        },
-        onError:()=>{
-            setSuccessMessage('');
-        }
+    const { data, setData, post, reset, errors } = useForm({
+        email: '',
+        password: ''
     });
-}
+    const [successMessage, setSuccessMessage] = useState('');
 
+    function submit(e) {
+        e.preventDefault();
+        post('/connexionPost', {
+            onSuccess: () => {
+                setSuccessMessage('');
+                reset();
+            },
+            onError: () => {
+                setSuccessMessage('');
+            }
+        });
+    }
 
     return (
         <div style={{ paddingTop: '10%', paddingBottom: '2%' }} className="d-flex justify-content-center">
@@ -52,7 +51,7 @@ function submit(e){
                         required
                     />
                 </div>
-                {errors.email && <div  style={{ fontSize:'10px' }} className="inputContainer help-block text-danger">{errors.email}</div>}
+                {errors.email && <div style={{ fontSize: '10px' }} className="inputContainer help-block text-danger">{errors.email}</div>}
 
                 <div className="inputContainer">
                     <input
@@ -61,12 +60,12 @@ function submit(e){
                         id="password"
                         placeholder="Mot de passe"
                         value={data.password}
-                        onChange={e => setData('password',e.target.value)}
+                        onChange={e => setData('password', e.target.value)}
                         name='password'
                         required
                     />
                 </div>
-                {errors.password && <div  style={{ fontSize:'10px' }} className="inputContainer help-block text-danger">{errors.password}</div>}
+                {errors.password && <div style={{ fontSize: '10px' }} className="inputContainer help-block text-danger">{errors.password}</div>}
 
                 <button type="submit" id="button">Se connecter</button>
                 <Link className="forgotLink" href="#">Mot de passe oublié?</Link>

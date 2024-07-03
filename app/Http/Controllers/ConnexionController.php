@@ -13,17 +13,32 @@ class ConnexionController extends Controller
     }
 
     public function login(Request $request) {
-        $credentials = $request->only('email', 'password',[
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ],[
             'email.email' => 'L\'adresse e-mail n\'est pas valide.',
             'password.password' => 'Mot de passe incorrect'
-
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             return redirect()->route('profil');
         }
 
         return redirect()->back()->withErrors(['email' => 'Les informations d\'identification ne correspondent pas.'])->withInput();
     }
+
+    public function profil() {
+        return Inertia::render('Profil', [
+            'user' => Auth::user()
+        ]);
+    }
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
 }

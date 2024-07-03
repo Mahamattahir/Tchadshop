@@ -1,9 +1,8 @@
 import { Link } from "@inertiajs/react";
 import ButtonAchetez from './bouttonachat';
 
-function GenerAllProduct({products,search}) {
-    console.log(search)
-
+function GenerAllProduct(products,search) {
+console.log(search)
     if (!products || products.length === 0) {
         return <p>No products available</p>;
     }
@@ -48,7 +47,8 @@ function ProductDetailbody(products,search) {
             <div className="container-fluid">
                 <div className='row px-xl-5'>
                     <FilterPrice />
-                    <ProductForAll products={products} search={search} />
+                    {ProductForAll(products,search)}
+                    {/* <ProductForAll products={products}  /> */}
                     <div className='col-12'>
                         <ul className="pagination justify-content-center">
                             <li className="page-item disabled"><Link className="page-link" href="#"><span>Pages</span></Link></li>
