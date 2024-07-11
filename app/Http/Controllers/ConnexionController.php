@@ -16,9 +16,6 @@ class ConnexionController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-        ],[
-            'email.email' => 'L\'adresse e-mail n\'est pas valide.',
-            'password.password' => 'Mot de passe incorrect'
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
@@ -34,11 +31,11 @@ class ConnexionController extends Controller
             'user' => Auth::user()
         ]);
     }
+
     public function logout(Request $request) {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
     }
-
 }

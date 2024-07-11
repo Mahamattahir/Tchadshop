@@ -1,6 +1,6 @@
 import React from 'react'
 
-function par() {
+const Panier=() =>{
     return (
         <div>
             <h2>
@@ -10,4 +10,4 @@ function par() {
     )
 }
 
-export default par
+export default Panier;

@@ -5,8 +5,10 @@ import { Dropdown } from 'react-bootstrap';
 import { Link } from '@inertiajs/react';
 import Logo from './Logo';
 import MonCompte from './MonCompte';
-
+import {useSelector} from 'react-redux'
 function Navbar({ categories = [], search, setSearch }) {
+    const cart = useSelector((state) => state.cart.items);
+
     const Linkpages = [
         { label: "Accueil", to: '/', icon: faHome },
         { label: "Produits", to: '/detail', icon: faBox },
@@ -86,7 +88,7 @@ function Navbar({ categories = [], search, setSearch }) {
 
         return (
             <div className="d-lg-none d-block">
-                {generateNavLink("fas fa-shopping-cart", 0)}
+                {generateNavLink("fas fa-shopping-cart", cart.length)}
                 <FontAwesomeIcon
                     className='gap btn px-0 ml-2 pt-3 border-0'
                     icon={faSearch}
@@ -149,7 +151,7 @@ function Navbar({ categories = [], search, setSearch }) {
                         {generatePages(Linkpages)}
                     </div>
                     <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
-                        {generateNavLink("fas fa-shopping-cart", 0)}
+                        {generateNavLink("fas fa-shopping-cart", cart.length)}
                     </div>
                     <MonCompte />
                 </div>

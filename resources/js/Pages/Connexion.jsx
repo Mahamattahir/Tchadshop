@@ -26,7 +26,7 @@ export function SigninForm() {
         e.preventDefault();
         post('/connexionPost', {
             onSuccess: () => {
-                setSuccessMessage('');
+                setSuccessMessage('Connexion réussie !'); // Exemple de message de succès
                 reset();
             },
             onError: () => {
@@ -69,7 +69,13 @@ export function SigninForm() {
 
                 <button type="submit" id="button">Se connecter</button>
                 <Link className="forgotLink" href="#">Mot de passe oublié?</Link>
-                <Link className="forgotLink" href="/inscription">Cree un compte</Link>
+                <Link className="forgotLink" href="/inscription">Créer un compte</Link>
+
+                {successMessage && (
+                    <div className="alert alert-success mt-3" role="alert">
+                        {successMessage}
+                    </div>
+                )}
             </form>
         </div>
     );
