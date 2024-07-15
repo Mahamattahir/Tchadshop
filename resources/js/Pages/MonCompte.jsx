@@ -59,11 +59,12 @@ function MonCompte() {
             <Dropdown.Menu show={isOpen} className="dropdown-menu-center">
                 {auth && auth.user ? (
                     <div>
-                        <Dropdown.Item  style={{ marginTop: "-4px", border: "none" }} href="/profil" className="dropdown-item ">
+                        <Dropdown.Item  as={Link} style={{ marginTop: "-4px", border: "none" }} href="/profil" className="dropdown-item ">
                            Proil
                         </Dropdown.Item>
 
                         <Dropdown.Item
+                         as={Link}
                             onClick={handleLogout}
                             className="dropdown-item"
                         >

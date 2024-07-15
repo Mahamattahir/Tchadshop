@@ -1,0 +1,9 @@
+.cartPage{
+    padding-top:5%;
+}
+
+@media (max-width:576px){
+    .cartPage{
+        padding-top:20%;
+    }
+}

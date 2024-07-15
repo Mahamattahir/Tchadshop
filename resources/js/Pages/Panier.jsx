@@ -4,8 +4,13 @@ import { removeFromCart, resetCart } from './features/cart/cartSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+// import ButtonAchetez from './bouttonachat';
+import { Inertia } from '@inertiajs/inertia';
+import { Link } from '@inertiajs/react';
 
-const Cart = () => {
+
+
+const Cart = (product) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const user = useSelector((state) => state.user);
@@ -15,14 +20,18 @@ const Cart = () => {
   };
 
   const handleOrder = () => {
-    Inertia.visit(`/acheter/${product.id}`);
+    alert('Commande passée!');
     dispatch(resetCart());
   };
 
-  const handleOrderItem = (itemId) => {
-    alert(`Commande pour l'article ${itemId} passée!`);
-    dispatch(removeFromCart(itemId));
-  };
+//   const handleOrderItem = (itemId) => {
+//     dispatch(removeFromCart(itemId));
+//     setTimeout(() => {
+//       Inertia.visit(`/acheter/${itemId}`);
+
+//     }, 0);
+//   };
+
 
   return (
     <div className="container mt-5">
@@ -54,9 +63,10 @@ const Cart = () => {
                   <button className="btn btn-danger btn-sm me-2" onClick={() => handleRemoveItem(item.id)}>
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
-                  <button className="btn btn-success btn-sm" onClick={() => handleOrderItem(item.id)}>
-
-                    <FontAwesomeIcon icon={faShoppingBag} />
+                  <button style={{backgroundColor:' rgb(133, 41, 205)' }} className="btn btn-success btn-sm">
+                    <Link href={`/acheter/${item.id}`} >
+                              <FontAwesomeIcon icon={faShoppingBag} style={{ color:'white' }} />
+                    </Link>
                   </button>
                 </td>
               </tr>

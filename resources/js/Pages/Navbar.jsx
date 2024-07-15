@@ -33,15 +33,13 @@ function Navbar({ categories = [], search, setSearch }) {
             </div>
         ));
     }
-
     function generateDropdownCategorie(categories) {
-        const handleClick = (id) => {
-            window.location.href = `/${id}`;
-        };
         return categories.map((categorie) => (
-            <Dropdown.Toggle key={categorie.id} as={Link} onClick={() => handleClick(categorie.id)} className="d-flex align-items-center nav-link dropdown-toggle text-dark">
-                {categorie.Name}
-            </Dropdown.Toggle>
+            <Dropdown.Item key={categorie.id} as="div" className="d-flex align-items-center nav-link dropdown-toggle text-dark">
+                <Link href={`/${categorie.id}`} className="text-dark w-100" style={{ textDecoration: 'none' }}>
+                    {categorie.Name}
+                </Link>
+            </Dropdown.Item>
         ));
     }
 

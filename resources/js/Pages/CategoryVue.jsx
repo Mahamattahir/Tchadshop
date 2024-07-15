@@ -29,15 +29,10 @@ const ProduitsFilterCategory = () => {
         if (products && categoryId) {
             const filtered = products.filter(product => product.category_id === parseInt(categoryId));
             setFilteredProducts(filtered);
-            // console.log('Products:', products);
-            // console.log('Category ID:', categoryId);
-            // console.log('Filtered Products:', filtered);
+
         }
     }, [categoryId, products]);
 
-    // if (filteredProducts.length === 0) {
-    //     return <p>Aucun produit trouvé dans cette catégorie.</p>;
-    // }
     return (
         <div className="d-flex flex-wrap">
             {filteredProducts.map((product) => (
@@ -57,7 +52,8 @@ const ProduitsFilterCategory = () => {
                                 <h6 className="text-muted ml-2"><del>{product.Price} FCFA</del></h6>
                             </div>
                             <div className="d-flex align-items-center justify-content-center mb-1">
-                            <ButtonAchetez key={product.id} product={product} />                            </div>
+                            <ButtonAchetez key={product.id} product={product} />
+                             </div>
                         </div>
                     </div>
                 </div>

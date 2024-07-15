@@ -1,20 +1,16 @@
-import React from 'react'
-import { Link } from '@inertiajs/react'
-import { Inertia } from '@inertiajs/inertia';
-function ButtonAchetez({product}) {
-    const handleClick = () => {
-        Inertia.visit(`/acheter/${product.id}`);
-    };
+import React from 'react';
+import { Link, usePage } from '@inertiajs/react';
 
-    return (
-    <div   className="BtnContact d-flex align-items-center justify-content-center mb-1">
-        <p  className="text-dark mr-1">
-            <button onClick={handleClick}  className="btn py-2 px-4" type="button" id="sendMessageButton">
-                <Link  href={`/acheter/${product.id}`} style={{ textDecoration: 'none', color: '#fff' }}>Acheter</Link>
-            </button>
-        </p>
+function ButtonAchetez({ product }) {
+  const { url } = usePage();
+
+  return (
+    <div className="btnCommander d-flex align-items-center justify-content-center mb-1">
+      <Link href={`/acheter/${product.id}`} className="btn py-2 px-4" style={{ textDecoration: 'none', color: '#fff' }}>
+          Acheter
+      </Link>
     </div>
-    )
+  );
 }
 
-export default ButtonAchetez
+export default ButtonAchetez;

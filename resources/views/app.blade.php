@@ -32,6 +32,7 @@
     @vite(['resources/css/acheter.css'])
     @vite(['resources/css/profil.css'])
     @vite(['resources/css/panier.css'])
+    @vite(['resources/css/cart.css'])
     @inertiaHead
 </head>
 <body>

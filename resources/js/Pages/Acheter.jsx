@@ -40,6 +40,8 @@ function Acheter({ product }) {
                 email,
                 phone,
                 Delivery_adress: address,
+            }, {
+                preserveState: true, // To prevent the page from reloading
             });
         }
     };
@@ -212,5 +214,3 @@ function GenereTx({
         </div>
     );
 }
-
-

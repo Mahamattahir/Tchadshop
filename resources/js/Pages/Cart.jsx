@@ -4,7 +4,7 @@ import Layout from './Layout'
 function CartPage({product}) {
     return (
         <Layout  product={product} >
-         <div style={{ padding:'5%' }}>
+         <div className='cartPage' style={{ padding:'5%' }}>
             <Cart/>
         </div>
         </Layout>
