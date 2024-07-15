@@ -24,8 +24,8 @@ const AjoutCart = ({ product }) => {
   };
 
   return (
-    <button onClick={addToCartHandler} className="btn btn-outline-dark btn-square">
-      <i className="fa fa-shopping-cart"></i>
+    <button style={{ border:'1px solid rgb(133, 41, 205)',padding:'0%' }} onClick={addToCartHandler} className="btn btn-outline-dark btn-square">
+      <i className="fa fa-shopping-cart fa-xl" style={{ color:'rgb(133,41, 205)' }}></i>
     </button>
   );
 };

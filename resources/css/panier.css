@@ -1,0 +1,14 @@
+.BtnPanier {
+    background-color: rgb(133, 41, 205);
+    border-radius: 50px;
+}
+.BtnPanier .btn  {
+
+    color: white;
+    border: none;
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+
+}

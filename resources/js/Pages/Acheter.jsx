@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Inertia } from '@inertiajs/inertia';
 import Layout from './Layout';
 
 function Acheter({ product }) {
@@ -29,6 +30,20 @@ function Acheter({ product }) {
         }
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (isFormValid) {
+            Inertia.post('/place', {
+                product_id: product.id,
+                quantity,
+                name,
+                email,
+                phone,
+                Delivery_adress: address,
+            });
+        }
+    };
+
     return (
         <Layout>
             <div className="AchterContainer container-fluid pb-5">
@@ -44,6 +59,7 @@ function Acheter({ product }) {
                         phone={phone} setPhone={setPhone}
                         address={address} setAddress={setAddress}
                         isFormValid={isFormValid}
+                        handleSubmit={handleSubmit}
                     />
                 </div>
             </div>
@@ -76,7 +92,8 @@ function GenereTx({
     email, setEmail,
     phone, setPhone,
     address, setAddress,
-    isFormValid
+    isFormValid,
+    handleSubmit
 }) {
     const handleHover = (event) => {
         event.target.style.transform = 'translateY(-3px)';
@@ -86,6 +103,16 @@ function GenereTx({
         event.target.style.transform = 'translateY(0)';
     };
 
+    const handleIncrementClick = (event) => {
+        event.preventDefault();
+        onIncrement();
+    };
+
+    const handleDecrementClick = (event) => {
+        event.preventDefault();
+        onDecrement();
+    };
+
     return (
         <div className="col-lg-7 h-auto mb-30">
             <div className="h-100 bg-light p-30">
@@ -93,7 +120,7 @@ function GenereTx({
                 <h3 className="font-weight-semi-bold mb-4">{product.Price} FCFA</h3>
                 <p className="mb-4">{product.description}</p>
                 <div>
-                    <form action="">
+                    <form onSubmit={handleSubmit}>
                         <div className="inputContainer">
                             <input
                                 type="text"
@@ -120,9 +147,8 @@ function GenereTx({
                                 alt="Tchad Flag"
                                 style={{ width: '30px' }}
                             />
-
                             <input
-                            style={{ marginLeft:'-25px' }}
+                                style={{ marginLeft: '-25px' }}
                                 type="tel"
                                 pattern="[0-9]{8}"
                                 className="inputField"
@@ -143,45 +169,48 @@ function GenereTx({
                                 onChange={(e) => setAddress(e.target.value)}
                             />
                         </div>
+                        <div className="d-flex pt-2">
+                            <strong className="text-dark mr-2">Nombre du produit:</strong>
+                        </div>
+                        <div className="d-flex align-items-center mb-4 pt-2">
+                            <div className="input-group quantity mr-3" style={{ width: "130px" }}>
+                                <div className="input-group-btn">
+                                    <button className="btn btnCommander btn-minus" onClick={handleDecrementClick} disabled={!isFormValid}>
+                                        <i className="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input
+                                    type="text"
+                                    className="form-control border-0 bg-transparent text-center"
+                                    value={quantity}
+                                    readOnly
+                                />
+                                <div className="input-group-btn">
+                                    <button className="btn btnCommander btn-plus" onClick={handleIncrementClick} disabled={!isFormValid}>
+                                        <i className="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button
+                                onMouseEnter={handleHover}
+                                onMouseLeave={handleMouseLeave}
+                                style={{ transition: 'transform 0.3s ease', backgroundColor: 'rgb(133, 41, 205)', color: 'white', borderRadius: '50px' }}
+                                className="btnCommander btn px-3"
+                                type="submit"
+                                disabled={!isFormValid}
+                            >
+                                <i className="fa fa-shopping-cart mr-1"></i>
+                                Commander
+                            </button>
+                        </div>
+                        {quantity >= product.Stock && (
+                            <p className="text-danger">L'stock ne suffit pas</p>
+                        )}
                     </form>
                 </div>
-                <div className="d-flex pt-2">
-                    <strong className="text-dark mr-2">Nombre du produit:</strong>
-                </div>
-                <div className="d-flex align-items-center mb-4 pt-2">
-                    <div className="input-group quantity mr-3" style={{ width: "130px" }}>
-                        <div className="input-group-btn">
-                            <button className="btn btnCommander btn-minus" onClick={onDecrement} disabled={!isFormValid}>
-                                <i className="fa fa-minus"></i>
-                            </button>
-                        </div>
-                        <input
-                            type="text"
-                            className="form-control border-0 bg-transparent text-center"
-                            value={quantity}
-                            readOnly
-                        />
-                        <div className="input-group-btn">
-                            <button className="btn btnCommander btn-plus" onClick={onIncrement} disabled={!isFormValid}>
-                                <i className="fa fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <button
-                        onMouseEnter={handleHover}
-                        onMouseLeave={handleMouseLeave}
-                        style={{ transition: 'transform 0.3s ease', backgroundColor: 'rgb(133, 41, 205)', color: 'white', borderRadius: '50px' }}
-                        className="btnCommander btn px-3"
-                        disabled={!isFormValid}
-                    >
-                        <i className="fa fa-shopping-cart mr-1"></i>
-                        Commander
-                    </button>
-                </div>
-                {quantity >= product.Stock && (
-                    <p className="text-danger">L'stock ne suffit pas</p>
-                )}
             </div>
         </div>
     );
 }
+
+

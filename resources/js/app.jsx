@@ -5,7 +5,6 @@ import { InertiaProgress } from '@inertiajs/progress';
 import { Provider } from 'react-redux'; // Import du Provider de Redux si nécessaire
 import store from './Pages/store'; // Import du store Redux si nécessaire
 
-// Initialise Inertia Progress (barre de progression)
 InertiaProgress.init();
 
 createInertiaApp({

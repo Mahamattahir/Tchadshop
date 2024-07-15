@@ -20,7 +20,6 @@ export function generateProductItems(products, search) {
                     <img className="img-fluid w-100" src={`/storage/${product.image_url}`} alt={product.Name} />
                     <div className="product-action">
                         <AjoutCart product={product}/>
-                        <Link className="btn btn-outline-dark btn-square" href=""><i className="far fa-heart"></i></Link>
                     </div>
                 </div>
                 <div className="text-center py-4">
