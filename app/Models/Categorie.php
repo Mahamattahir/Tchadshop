@@ -1,25 +1,18 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Categorie extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory;
+
     protected $fillable = ['Name', 'Slug', 'product_list'];
-    protected $guarded = [''];
 
-    public function toSearchableArray(): array
+    // Définir la relation inverse avec les produits
+    public function products()
     {
-        $searcharray = [
-            'Name'=>$this->Name
-        ];
-
-
-
-        return $searcharray;
+        return $this->hasMany(Product::class, 'category_id'); // Assurez-vous que 'category_id' est le nom correct de la colonne de clé étrangère
     }
 }

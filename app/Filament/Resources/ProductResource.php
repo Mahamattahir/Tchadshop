@@ -4,8 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
+use App\Models\Categorie;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Forms\Form;
 use Filament\Tables;
@@ -24,20 +26,58 @@ class ProductResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            TextInput::make('name')->required()->maxLength(255),
-            TextInput::make('price')->required()->numeric(),
-            Forms\Components\Textarea::make('description')->maxLength(65535),
-            Forms\Components\FileUpload::make('image')->image()->maxSize(1024),
+            TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+
+            TextInput::make('price')
+                ->required()
+                ->numeric(),
+
+            Forms\Components\Textarea::make('description')
+                ->maxLength(65535),
+
+            Forms\Components\FileUpload::make('image_url')
+                ->image()
+                ->maxSize(1024)
+                ->directory('images') // Stocke l'image dans le répertoire 'images'
+                ->preserveFilenames(), // Préserve le nom du fichier original
+
+            Select::make('category_id')
+                ->label('Category')
+                ->options(fn() => Categorie::all()->pluck('Name', 'id'))
+                ->nullable()
+                ->searchable(),
+
+            TextInput::make('stock')
+                ->numeric()
+                ->default(0),
         ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table->columns([
-            TextColumn::make('name'),
-            TextColumn::make('price')->money('USD'),
-            ImageColumn::make('image'),
-            TextColumn::make('created_at')->dateTime(),
+            TextColumn::make('Name'),
+
+            TextColumn::make('Price')
+                ->money('XAF'),
+
+            ImageColumn::make('image_url')
+                ->getStateUsing(fn($record) => $record->image_url ? asset("storage/{$record->image_url}") : null)
+
+
+                ->size(50)
+                ->circular(),
+
+            TextColumn::make('Stock')
+                ->label('Stock'),
+
+            TextColumn::make('category.Name')
+                ->label('Category'),
+
+            TextColumn::make('created_at')
+                ->dateTime(),
         ])
         ->actions([
             EditAction::make(),
